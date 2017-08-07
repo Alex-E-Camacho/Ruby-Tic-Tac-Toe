@@ -14,5 +14,6 @@ class TicTacToeBoard
     @board = @board.map do |row|
       row.map { |num| num == space ? num = mark : num }
     end
+    render_board
   end
 end
