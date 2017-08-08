@@ -61,11 +61,5 @@ class Board
     @board.flatten.select { |spot| spot.class == Fixnum }
   end
 
-  def check_for_winner
-    winner_present = false
-      if row_contains_winner? == true || column_contains_winner? == true || left_to_right_diagonal_winner? == true || right_to_left_diagonal_winner? == true
-        winner_present = true
-      end
-    winner_present
-  end
+  
 end
