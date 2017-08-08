@@ -1,9 +1,9 @@
-class TicTacToeBoard
+class TTTBoard
   attr_reader :board
 
   def initialize
     @spaces = 9
-    @board = (1..@spaces).to_a.each_slice(3).to_a
+    @board  = (1..@spaces).to_a.each_slice(3).to_a
   end
 
   def render_board
@@ -15,5 +15,13 @@ class TicTacToeBoard
       row.map { |num| num == space ? num = mark : num }
     end
     render_board
+  end
+
+  def row_contains_winner?
+    answer = false
+    @board.each do |row|
+      (row.uniq.count == 1) ? answer = true : answer
+    end
+    answer
   end
 end
