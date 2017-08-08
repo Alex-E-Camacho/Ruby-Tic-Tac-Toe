@@ -60,6 +60,5 @@ class Board
   def remaining_spots
     @board.flatten.select { |spot| spot.class == Fixnum }
   end
-
   
 end
