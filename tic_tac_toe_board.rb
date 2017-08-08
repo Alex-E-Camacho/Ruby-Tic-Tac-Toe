@@ -28,4 +28,12 @@ class TTTBoard
     @board.transpose.each { |row| row.uniq.count == 1 ? answer = true : answer }
     answer
   end
+
+  def left_to_right_diagonal_winner?
+    answer = false
+    board_range = @board.count - 1
+    diagonal_marks = (0..board_range).collect { |i| @board[i][i] }
+    diagonal_marks.uniq.count == 1 ? answer = true : false 
+    answer
+  end
 end
