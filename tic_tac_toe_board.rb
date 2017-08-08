@@ -19,9 +19,7 @@ class TTTBoard
 
   def row_contains_winner?
     answer = false
-    @board.each do |row|
-      (row.uniq.count == 1) ? answer = true : answer
-    end
+    @board.each { |row| row.uniq.count == 1 ? answer = true : answer }
     answer
   end
 end
