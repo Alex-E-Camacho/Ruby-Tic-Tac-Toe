@@ -22,4 +22,10 @@ class TTTBoard
     @board.each { |row| row.uniq.count == 1 ? answer = true : answer }
     answer
   end
+
+  def column_contains_winner?
+    answer = false
+    @board.transpose.each { |row| row.uniq.count == 1 ? answer = true : answer }
+    answer
+  end
 end
