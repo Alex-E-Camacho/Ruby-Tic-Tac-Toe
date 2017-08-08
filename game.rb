@@ -1,13 +1,14 @@
 require_relative './board'
 
 class Game
-  attr_reader :board
+  attr_reader :board, :over
 
   def initialize(args = {})
     @board   = Board.new
     @player1 = args.fetch(:player1)
     @player2 = args.fetch(:player2)
     @winner
+    @over = false
   end
 
   def check_for_winner
@@ -20,5 +21,12 @@ class Game
 
   def check_for_stalemate
     (@board.remaining_spots.count == 0 && check_for_winner == false) ? true : false
+  end
+
+  def over?
+    if check_for_winner == true || check_for_stalemate == true
+      @over = true
+    end
+    @over
   end
 end
