@@ -56,4 +56,9 @@ class TTTBoard
     diagonal_marks.uniq.count == 1 ? answer = true : answer
     answer
   end
+
+  def remaining_spots
+    @board.flatten.select { |spot| spot.class == Fixnum }
+  end
+
 end
