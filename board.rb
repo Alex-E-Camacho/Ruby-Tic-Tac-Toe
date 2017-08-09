@@ -4,11 +4,16 @@ class Board
   def initialize
     @spaces = 9
     @board  = (1..@spaces).to_a.each_slice(3).to_a
-    @winning_letter
+    @winning_letter = nil
   end
 
   def render_board
     @board.each { |arr| p arr }
+  end
+
+  def reset_board
+    @board  = (1..@spaces).to_a.each_slice(3).to_a
+    @winning_letter = nil
   end
 
   def add_player_move(chosen_space, player_mark)

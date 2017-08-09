@@ -26,7 +26,11 @@ until game.over == true
 
     if game.over?
       puts game.game_message
-      break
+      sleep(0.5)
+      puts "Would you like to play again?"
+      puts "Type 1 to replay or 2 to exit."
+      replay_option = gets.chomp
+      replay_option == "1" ? game.reset_game : break
     end
 
   sleep(1.5)
@@ -37,8 +41,12 @@ until game.over == true
 
   game.computer_move
 
-  if game.over?
-    puts game.game_message
-    break
-  end
+    if game.over?
+      puts game.game_message
+      sleep(0.5)
+      puts "Would you like to play again?"
+      puts "Type 1 to replay or 2 to exit."
+      replay_option = gets.chomp
+      replay_option == "1" ? game.reset_game : break
+    end
 end
