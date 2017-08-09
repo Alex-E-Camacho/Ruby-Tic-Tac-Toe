@@ -2,13 +2,13 @@ require_relative './game'
 
 puts "Press 1 to be X's or 2 to be O's."
 
-players_choice = gets.chomp
+player_choice = gets.chomp
 
-  if players_choice == "1"
-    player_mark = "X"
+  if player_choice == "1"
+    player_mark   = "X"
     computer_mark = "O"
   else
-    player_mark = "O"
+    player_mark   = "O"
     computer_mark = "X"
   end
 
@@ -17,6 +17,7 @@ game = Game.new(computer_mark: computer_mark)
 game.board.render_board
 
 until game.over == true
+  sleep(1)
   puts "Choose a space to place your #{player_mark}."
 
   player_space = gets.chomp.to_i
@@ -24,7 +25,7 @@ until game.over == true
   game.board.add_player_move(player_space, player_mark)
 
     if game.over?
-      puts "Congratulations! You beat the computer!"
+      puts game.game_message
       break
     end
 
@@ -36,5 +37,8 @@ until game.over == true
 
   game.computer_move
 
-  game.over?
+  if game.over?
+    puts game.game_message
+    break
+  end
 end
