@@ -24,7 +24,7 @@ This is the Minimum Viable Product. I would like to add the following improvemen
 
 3. **Board Visualization**
 
-   Currently, I'm using symbols of either *X* or *O* because having them as strings with double quotes around them unaligned the board too much. I couldn't find a way to display the strings without the quotes so using the symbol takes up only one space for the colon as opposed to one space on each side of the string. Ideally, the *X* and *O* can be displayed with no quotes or colons the way integers are.
+   Currently, I'm using symbols of either *X* or *O* because having them as strings with double quotes around them unaligned the board too much. I couldn't find a way to display the strings without the quotes so using the symbol takes up only one space for the colon as opposed to one space on each side of the string for the quotes. Ideally, the *X* and *O* can be displayed with no quotes or colons the way integers are.
 
    However, the ultimate goal would be to have a board that actually resembles a tic tac toe hash board instead of three stacked arrays.
 
