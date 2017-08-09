@@ -1,10 +1,8 @@
 class Computer
-  attr_accessor :mark
-  attr_reader :space
+  attr_reader :mark, :space
 
   def initialize(args={})
     @mark = args.fetch(:mark)
-    @space
   end
 
   def choose_move(arr_of_remaining_spaces)
