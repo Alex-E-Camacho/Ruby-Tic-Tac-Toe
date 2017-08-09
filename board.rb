@@ -13,7 +13,7 @@ class Board
 
   def add_player_move(space, mark)
     @board = @board.map do |row|
-      row.map { |num| num == space ? num = mark : num }
+      row.map { |num| num == space ? num = mark.to_sym : num }
     end
     render_board
   end
