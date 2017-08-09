@@ -11,9 +11,9 @@ class Board
     @board.each { |arr| p arr }
   end
 
-  def add_player_move(space, mark)
+  def add_player_move(chosen_space, player_mark)
     @board = @board.map do |row|
-      row.map { |num| num == space ? num = mark.to_sym : num }
+      row.map { |num| num == chosen_space ? num = player_mark.to_sym : num }
     end
     render_board
   end
