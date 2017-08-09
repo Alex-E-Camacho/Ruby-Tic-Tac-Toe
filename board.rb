@@ -1,9 +1,10 @@
 class Board
-  attr_reader :board
+  attr_reader :board, :winning_letter
 
   def initialize
     @spaces = 9
     @board  = (1..@spaces).to_a.each_slice(3).to_a
+    @winning_letter
   end
 
   def render_board
@@ -12,20 +13,20 @@ class Board
 
   def add_player_move(space, mark)
     @board = @board.map do |row|
-      row.map { |num| num == space ? num = mark : num }
+      row.map { |num| num == space ? num = mark.to_sym : num }
     end
     render_board
   end
 
   def row_contains_winner?
     answer = false
-    @board.each { |row| row.uniq.count == 1 ? answer = true : answer }
+    @board.each { |row| row.uniq.count == 1 ? (answer = true) && (@winning_letter = row.uniq[0]) : answer }
     answer
   end
 
   def column_contains_winner?
     answer = false
-    @board.transpose.each { |row| row.uniq.count == 1 ? answer = true : answer }
+    @board.transpose.each { |row| row.uniq.count == 1 ? (answer = true) && (@winning_letter = row.uniq[0]) : answer }
     answer
   end
 
@@ -33,7 +34,7 @@ class Board
     answer = false
     board_range = @board.count - 1
     diagonal_marks = (0..board_range).collect { |i| @board[i][i] }
-    diagonal_marks.uniq.count == 1 ? answer = true : answer
+    diagonal_marks.uniq.count == 1 ? (answer = true) && (@winning_letter = diagonal_marks.uniq[0]) : answer
     answer
   end
 
@@ -53,12 +54,12 @@ class Board
       beginning_index -= 1
     end
     # check array with .uniq
-    diagonal_marks.uniq.count == 1 ? answer = true : answer
+    diagonal_marks.uniq.count == 1 ? (answer = true) && (@winning_letter = diagonal_marks.uniq[0]) : answer
     answer
   end
 
   def remaining_spots
     @board.flatten.select { |spot| spot.class == Fixnum }
   end
-  
+
 end
