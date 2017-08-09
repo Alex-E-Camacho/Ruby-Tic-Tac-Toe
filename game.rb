@@ -2,7 +2,7 @@ require_relative './board'
 require_relative './computer'
 
 class Game
-  attr_reader :board, :over
+  attr_reader :board, :over, :game_message
 
   def initialize(args = {})
     @board    = Board.new
@@ -28,7 +28,20 @@ class Game
   end
 
   def over?
-    if check_for_winner || check_for_stalemate
+    possible_messages = {
+      computer_wins: "The computer beat you!",
+      computer_loses: "You beat the computer!",
+      stalemate: "You have met your equal. No one wins!"
+    }
+    
+    if check_for_winner && @board.winning_letter.to_s == @computer.mark
+      @game_message = possible_messages[:computer_wins]
+      @over = true
+    elsif check_for_winner && @board.winning_letter.to_s != @computer.mark
+      @game_message = possible_messages[:computer_loses]
+      @over = true
+    elsif check_for_stalemate
+      @game_message = possible_messages[:stalemate]
       @over = true
     end
   end
