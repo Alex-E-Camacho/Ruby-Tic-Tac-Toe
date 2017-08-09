@@ -45,4 +45,9 @@ class Game
       @over = true
     end
   end
+
+  def reset_game
+    @over = false
+    @board.reset_board
+  end
 end
