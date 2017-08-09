@@ -19,7 +19,7 @@ class Game
   end
 
   def check_for_stalemate
-    (@board.remaining_spots.count == 0 && check_for_winner == false) ? true : false
+    (@board.remaining_spots.count == 0 && !check_for_winner) ? true : false
   end
 
   def computer_move
