@@ -12,7 +12,7 @@ class Game
 
   def check_for_winner
     winner_present = false
-      if @board.row_contains_winner? == true || @board.column_contains_winner? == true || @board.left_to_right_diagonal_winner? == true || @board.right_to_left_diagonal_winner? == true
+      if @board.row_contains_winner? || @board.column_contains_winner? || @board.left_to_right_diagonal_winner? || @board.right_to_left_diagonal_winner?
         winner_present = true
       end
     winner_present
@@ -33,7 +33,7 @@ class Game
       computer_loses: "You beat the computer!",
       stalemate: "You have met your equal. No one wins!"
     }
-    
+
     if check_for_winner && @board.winning_letter.to_s == @computer.mark
       @game_message = possible_messages[:computer_wins]
       @over = true
